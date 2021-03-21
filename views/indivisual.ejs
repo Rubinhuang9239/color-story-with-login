@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <title><%= data.name%>'s order</title>
+        <link rel="stylesheet" href="./templetStyle.css" />
+    </head>
+    <body style="margin: 20%; font-family: sans-serif; background-color: aquamarine;">
+        <%  if (data.gender == "male"){ %>
+            <h1> Hello! Handsome <%= data.name %>. Here is your order</h1>
+        <% }else{ %>
+            <h1> Hello! Beautiful <%= data.name %>. Here is your order</h1>
+        <% } %>
+        
+        <p>You ordered <%= data.main_course %> as your main course, 
+        and <%= data.sides %> for your sides.
+        </p><br />
+        
+        <p>And you are allergic to: </p>
+        <p><%= data.allergy%></p>
+    </body>
+</html>

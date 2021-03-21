@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <Title>New Color Story</Title>
+    </head>
+    <body>
+        <form method="POST" action="/storyhub">
+            <h1>New Color Story</h1>
+            <label for="story">Type your story here...</label><br />
+            <textarea name="story" cols="50" row="10"></textarea><br />
+
+            <label for="storyColor">Pick a color for your story</label>
+            <input type="color" name="storyColor" id="storyColor"><br />
+
+            <input type="radio" name="visibility"  id="privateView" value="privateView">
+            <label for="privateView">Private</label>
+            <input type="radio" name="visibility"  id="publicView" value="publicView">
+            <label for="publicView">Public</label><br/><br/>
+
+            <input type="submit" name="submit" value="Done" id="submit">
+        </form>
+    </body>
+</html>

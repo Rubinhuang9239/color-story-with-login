@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <title>Your Color Stories</title>
+        <link rel="stylesheet" href="/css/storyhubstyle.css" />
+        <script>
+            //Web Speech API - speechSynthesis
+            var synth = window.speechSynthesis;
+
+            function say(something){
+                var utterThis = new SpeechSynthesisUtterance(something);
+                utterThis.voice = synth.getVoices()[0];
+                utterThis.pitch = 1;
+                utterThis.rate = 1;
+                synth.speak(utterThis);
+            }
+        </script>
+        
+    </head>
+    <body>
+        <div id="createNewPage"><a href="/logout">Logout</a></div>
+
+        <select id='visibility-settings-select'>
+            <option disabled selected value="volvo">Visibility Settings</option>
+            <option value="">ALL Posts</option>
+            <option value="publicView">Only Public Posts</option>
+        </select>
+
+        <h1>Here are your Color Stories</h1>
+
+        <% for (var i = 0; i < data.length; i++){ %>
+            <div class="storybox" id="story<%= i %>" style="background-color: <%= data[i].storyColor %>">
+                <%  if (data[i].visibility == "privateView"){ %>
+                    <div class="visibility">PRIVATE</div>
+                <% }else{ %>
+                    <div class="visibility"> PUBLIC </div>
+                <% } %>
+                <div>
+                    <%= data[i].story %>
+                </div>
+            </div>
+        <% } %>
+
+        <div id="createNewPage"><a href="/public/newPage.html">New Story</a></div>
+    </body>
+
+    <script>
+        var dataLenth = (document.getElementsByClassName('storybox')).length;
+
+        for (var i = 0; i < dataLenth; i++){ 
+            var inputButton = document.getElementById("story" + i);
+            inputButton.addEventListener('click', function(event){
+                var target = event.target;
+                console.log(
+                    target.children[target.children.length-1].innerText
+                );
+            });
+        }
+
+        var visibilitySelect = document.getElementById('visibility-settings-select');
+
+        visibilitySelect.addEventListener('change', (event)=>{
+            window.open('http://' + window.location.hostname + '/' + visibilitySelect.value);
+        })
+    </script>
+
+    
+</html>
